@@ -4,14 +4,15 @@ const cleaner = require('./cleaner')
 
 let formatted = []
 
-module.exports = rawHTMLData => {
+module.exports = (rawHTMLData, config) => {
         console.log('pages - ' + rawHTMLData.length)
         rawHTMLData.map(e => {
                 let parsedData = new JSDOM(e)
                 let allRows = parsedData.window.document.querySelector("#CatalogList tbody").rows
                 let rows = Object.keys(allRows).map(key => allRows[key])
                 rows.map(e => {
-                        let subjectCode = e.cells[0].innerHTML.split("\n").filter(e => e.search("CSE") > 0)
+                        // This is specifically written to search for CSE courses, may not work for others ie will require modification in the parsing below.
+                        let subjectCode = e.cells[0].innerHTML.split("\n").filter(e => e.search(config.dept) > 0)
                         let subjectName = e.cells[1].innerHTML.split("\n")[8].replace('\t', '').trim()
                         let subjectInstructor = e.cells[3].innerHTML.split("\n")
                         let subjectSeatsOpen = e.cells[10].innerHTML.split("\n")[6].replace('\t', '').trim()
@@ -29,5 +30,5 @@ module.exports = rawHTMLData => {
                         formatted.push(f)
                 })
         })
-        cleaner(formatted)
+        cleaner(formatted, config)
 }

@@ -71,6 +71,6 @@ module.exports = async (config) => {
 
     await browser.close()
 
-    classParser(pages)
+    classParser(pages, config)
 }
 
