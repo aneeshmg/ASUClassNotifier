@@ -25,8 +25,8 @@ bot.onTextMessage(message => {
         message.reply("Sorry I didnt get that..")
     } else {
         // Expecting incoming message to have a format of "XYZ 111" where XYZ is the dept code and 111 is the number
-        context.dept = message.split(' ')[0].toUpperCase()
-        context.number = message.split(' ')[1]
+        context.dept = message.body.split(' ')[0].toUpperCase()
+        context.number = message.body.split(' ')[1]
 
         worker(context, message.reply)
     }
