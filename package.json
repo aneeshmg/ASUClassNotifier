@@ -1,0 +1,24 @@
+{
+  "name": "asuclassnotifier",
+  "version": "1.0.0",
+  "description": "Was previously @git/aneeshmg/Javascript/ASUClassNotifier --------------------------------------------------------",
+  "main": "index.js",
+  "dependencies": {
+    "@kikinteractive/kik": "^2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aneeshmg/ASUClassNotifier.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aneeshmg/ASUClassNotifier/issues"
+  },
+  "homepage": "https://github.com/aneeshmg/ASUClassNotifier#readme"
+}
