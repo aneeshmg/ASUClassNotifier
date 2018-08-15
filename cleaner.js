@@ -1,8 +1,8 @@
-module.exports = (rawJSON, config) => {
-    let clean = rawJSON.filter(e => e.name.length > 0 && 
+module.exports = (rawJSON, context, handler) => {
+    let cleaned = rawJSON.filter(e => e.name.length > 0 && 
         e.instructor.length > 0 &&
         e.total.length > 0 &&
         e.available.length > 0)
     
-    console.log(clean, config)
+    handler(cleaned)
 }

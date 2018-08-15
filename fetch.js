@@ -31,12 +31,13 @@ const puppeteer = require('puppeteer')
 let pages = []
 
 // IFFY execution
-module.exports = async (config) => {
+module.exports = async (context, handler) => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
     const baseUrl = "https://webapp4.asu.edu/catalog/myclasslistresults"
-    const urlParams = `t=${config.term}&s=${config.dept}&hon=F&promod=F&e=all`
+    let urlParams = `t=${context.term}&s=${context.dept}&hon=F&promod=F&e=all`
+    urlParams += context.kik? `&n=${context.number}` : ''
     const url = `${baseUrl}?${urlParams}`
 
     /* Uncomment for login
@@ -50,19 +51,25 @@ module.exports = async (config) => {
     const testUrl1 = "http://localhost:8000/index1.html"
     const testUrl2 = "http://localhost:8000/index2.html"
     const testUrl3 = "http://localhost:8000/index3.html"
-    await page.goto(testUrl1)
-    pages.push(await page.content())
-    await page.goto(testUrl2)
-    pages.push(await page.content())
-    await page.goto(testUrl3)
-    pages.push(await page.content())
+    // await page.goto(testUrl1)
+    // pages.push(await page.content())
+    // await page.goto(testUrl2)
+    // pages.push(await page.content())
+    // await page.goto(testUrl3)
+    // pages.push(await page.content())
 
-    // await page.goto(`${url}&page=1`)
-    // pages.push(await page.content())
-    // await page.goto(`${url}&page=2`)
-    // pages.push(await page.content())
-    // await page.goto(`${url}&page=3`)
-    // pages.push(await page.content())
+    if (confcontextig.kik) {
+        await page.goto(url)
+        pages.push(await page.content())
+    } else {
+        // If a scheduled job triggers it
+        await page.goto(`${url}&page=1`)
+        pages.push(await page.content())
+        await page.goto(`${url}&page=2`)
+        pages.push(await page.content())
+        await page.goto(`${url}&page=3`)
+        pages.push(await page.content())
+    }
 
     /* If you need a screenshot of the loaded page(s)
      * await page.waitForSelector('.pagination')
@@ -71,6 +78,6 @@ module.exports = async (config) => {
 
     await browser.close()
 
-    classParser(pages, config)
+    classParser(pages, context, handler)
 }
 
