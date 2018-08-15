@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "@kikinteractive/kik": "^2.2.1",
-    "jsdom": "^11.12.0"
+    "jsdom": "^11.12.0",
+    "puppeteer": "^1.7.0"
   },
   "devDependencies": {},
   "scripts": {
