@@ -4,7 +4,8 @@
   "description": "Was previously @git/aneeshmg/Javascript/ASUClassNotifier --------------------------------------------------------",
   "main": "index.js",
   "dependencies": {
-    "@kikinteractive/kik": "^2.2.1"
+    "@kikinteractive/kik": "^2.2.1",
+    "jsdom": "^11.12.0"
   },
   "devDependencies": {},
   "scripts": {
