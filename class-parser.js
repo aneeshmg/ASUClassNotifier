@@ -8,6 +8,7 @@ module.exports = (rawHTMLData, context, handler) => {
         console.log('pages - ' + rawHTMLData.length)
         rawHTMLData.map(e => {
                 let parsedData = new JSDOM(e)
+                console.log(parsedData.window.document.querySelector("#CatalogList tbody"))
                 let allRows = parsedData.window.document.querySelector("#CatalogList tbody").rows
                 let rows = Object.keys(allRows).map(key => allRows[key])
                 let f = {}
