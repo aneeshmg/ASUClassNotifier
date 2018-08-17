@@ -4,5 +4,5 @@ module.exports = (rawJSON, context, handler) => {
         e.total.length > 0 &&
         e.available.length > 0)
     
-    handler(cleaned)
+    console.log(cleaned)
 }
