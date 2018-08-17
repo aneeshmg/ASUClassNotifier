@@ -58,7 +58,7 @@ module.exports = async (context, handler) => {
     // await page.goto(testUrl3)
     // pages.push(await page.content())
 
-    if (confcontextig.kik) {
+    if (context.kik) {
         await page.goto(url)
         pages.push(await page.content())
     } else {
