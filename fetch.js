@@ -59,6 +59,7 @@ module.exports = async (context, handler) => {
     // pages.push(await page.content())
 
     if (context.kik) {
+        console.log(url)
         await page.goto(url)
         pages.push(await page.content())
     } else {
