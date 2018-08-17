@@ -24,6 +24,8 @@ bot.onTextMessage(message => {
         // Place the message in config perhaps?
         message.reply(message.body)
     } else {
+        // term set in config
+        context.term = config.term
         // Expecting incoming message to have a format of "XYZ 111" where XYZ is the dept code and 111 is the number
         context.dept = message.body.split(' ')[0].toUpperCase()
         context.number = message.body.split(' ')[1]
