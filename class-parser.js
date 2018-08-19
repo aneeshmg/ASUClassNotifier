@@ -2,10 +2,9 @@ const jsdom = require("jsdom")
 const { JSDOM } = jsdom
 const cleaner = require('./cleaner')
 
-let formatted = []
-
 module.exports = (rawHTMLData, context) => {
         console.log('pages - ' + rawHTMLData.length)
+        let formatted = []
         rawHTMLData.map(e => {
                 let parsedData = new JSDOM(e)
                 let allRows = parsedData.window.document.querySelector("#CatalogList tbody").rows

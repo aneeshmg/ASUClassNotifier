@@ -2,7 +2,6 @@ const worker = require('./fetch')
 const config = require('./config')
 const http = require('http')
 const Bot = require('@kikinteractive/kik')
-const responder = require('./responder')
 
 let context = {}
 
