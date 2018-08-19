@@ -2,6 +2,7 @@ const worker = require('./fetch')
 const config = require('./config')
 const http = require('http')
 const Bot = require('@kikinteractive/kik')
+const responder = require('./responder')
 
 let context = {}
 
@@ -29,11 +30,18 @@ bot.onTextMessage(message => {
         // Expecting incoming message to have a format of "XYZ 111" where XYZ is the dept code and 111 is the number
         context.dept = message.body.split(' ')[0].toUpperCase()
         context.number = message.body.split(' ')[1]
-        console.log(context.dept + ' lala ' + context.number)
 
-        worker(context, message.reply)
+        const handler = {
+            method : responder,
+            context : {
+                to : message.from,
+                id : message.chatId
+            }
+        }
+
+        worker(context, handler)
     }
-
+    // TODO: Use baray!
     console.log(message)
 });
 

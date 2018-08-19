@@ -7,5 +7,5 @@ module.exports = (rawJSON, context, handler) => {
             Available: ${e.available}\nTotal: ${e.total}` 
         }).map(e => `${e}\n` )
     
-    handler(cleaned)
+    handler.method.send(handler.context.to, handler.context.id)
 }
