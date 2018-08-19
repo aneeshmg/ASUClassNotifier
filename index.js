@@ -31,15 +31,10 @@ bot.onTextMessage(message => {
         context.dept = message.body.split(' ')[0].toUpperCase()
         context.number = message.body.split(' ')[1]
 
-        const handler = {
-            method : responder,
-            context : {
-                to : message.from,
-                id : message.chatId
-            }
-        }
+        context.to = message.from
+        context.chatId = message.chatId
 
-        worker(context, handler)
+        worker(context)
     }
     // TODO: Use baray!
     console.log(message)
@@ -67,7 +62,7 @@ let server = http
 
 // TODO: setup scheduled job, job.js?
 
-module.exports = handler => {
+module.exports = () => {
     context.term = config.term
-    worker(context, handler)
+    worker(context)
 }

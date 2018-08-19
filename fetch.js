@@ -31,7 +31,7 @@ const puppeteer = require('puppeteer')
 let pages = []
 
 // IFFY execution
-module.exports = async (context, handler) => {
+module.exports = async context => {
     const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     const page = await browser.newPage()
 
@@ -79,6 +79,6 @@ module.exports = async (context, handler) => {
 
     await browser.close()
 
-    classParser(pages, context, handler)
+    classParser(pages, context)
 }
 

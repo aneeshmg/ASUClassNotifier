@@ -1,4 +1,4 @@
-module.exports = (rawJSON, context, handler) => {
+module.exports = (rawJSON, context) => {
     let cleaned = rawJSON.filter(e => e.name.length > 0 && 
         e.instructor.length > 0 &&
         e.total.length > 0 &&
@@ -7,5 +7,5 @@ module.exports = (rawJSON, context, handler) => {
             Available: ${e.available}\nTotal: ${e.total}` 
         }).map(e => `${e}\n` )
     
-    handler.method.send(handler.context.to, handler.context.id)
+    require('./responder')(cleaned, context.to, context.chatId)
 }

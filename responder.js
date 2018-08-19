@@ -5,10 +5,6 @@ const config = require('./config')
 
 module.exports = (data, to, chatId) => {
     const url = 'https://api.kik.com/v1/message'
-    const auth = {
-        user: config.username,
-        pass: config.apiKey
-    }
     const payload = {
         "messages": [
             {
