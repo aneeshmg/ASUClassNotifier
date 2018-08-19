@@ -7,5 +7,6 @@ module.exports = (rawJSON, context) => {
             Available: ${e.available}\nTotal: ${e.total}` 
         }).map(e => `${e}\n` )
     
-    require('./responder')(cleaned, context.to, context.chatId)
+    console.log(cleaned)
+    require('./responder')("cleaned", context.to, context.chatId)
 }

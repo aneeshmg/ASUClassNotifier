@@ -62,6 +62,7 @@ module.exports = async context => {
         console.log(url)
         await page.goto(url)
         pages.push(await page.content())
+        pages = []
     } else {
         // If a scheduled job triggers it
         await page.goto(`${url}&page=1`)

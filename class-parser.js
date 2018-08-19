@@ -49,4 +49,5 @@ module.exports = (rawHTMLData, context) => {
                 }
         })
         cleaner(formatted, context)
+        formatted = []
 }
